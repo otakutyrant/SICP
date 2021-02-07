@@ -1,0 +1,13 @@
+(define (enumerate-intervals x y)
+  (if (> x y)
+    ()
+    (cons x (enumerate-intervals (+ x 1) y))
+  )
+)
+(define (flatmap op sequence)
+  (accumulate append () (map op sequence))
+)
+(define
+  (remove item sequence)
+  (filter (lambda (x) (not (= x item))) sequence)
+)
