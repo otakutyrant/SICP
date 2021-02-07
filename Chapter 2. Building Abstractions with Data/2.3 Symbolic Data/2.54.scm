@@ -1,0 +1,28 @@
+(define (equal-type? a b)
+  (or
+    (and (symbol? a) (symbol? b))
+    (and (list? a) (list? b))
+    (and (null? a) (null? ))
+  )
+)
+(define (equal-length? a b)
+  (= (length a) (length b))
+)
+(define (equal? seq1 seq2)
+  (cond
+    ((not (equal-type? seq1 seq2)) #f)
+    ((symbol? seq1) (eq? seq1 seq2))
+    ((null? seq1) #t)
+    (
+      (list? seq1)
+      (and
+        (equal-length? seq1 seq2)
+        (equal? (car seq1) (car seq2))
+        (equal? (cdr seq1) (cdr seq2))
+      )
+    )
+  )
+)
+(equal? '(this is a list) '(this is a list))
+(equal? '(this is a list) '(this (is a) list))
+(equal? '(this (is a) list) '(this (is a) list))
