@@ -5,7 +5,7 @@
   )
 )
 (define (flatmap op sequence)
-  (accumulate append () (map op sequence))
+  (fold-right append () (map op sequence))
 )
 (define
   (remove item sequence)
